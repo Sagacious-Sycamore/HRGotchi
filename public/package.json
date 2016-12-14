@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startReact": "babel . --watch --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled,bower_components --source-maps inline"
+    "preinstall": "bower install",
+    "postinstall": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled,bower_components --source-maps inline"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,9 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "jsx-loader": "^0.13.2"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
   }
 }

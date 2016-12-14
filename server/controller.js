@@ -2,6 +2,7 @@ var db = require('../data/database.js');
 var Pet = db.Pet;
 var User = db.User;
 var Log = db.Log;
+var Question = db.Question;
 var bcrypt = require('bcryptjs');
 var moment = require('moment');
 
@@ -70,6 +71,32 @@ module.exports = {
         console.log('Created new pet.');
         res.send("success");
       });
+  },
+  /********** Quiz Functions **********/
+  getQuestion: function(req, res, next) {
+    Question.findAll({})
+      .then(function(questions) {
+        // Pull a random question
+        var randomChoice = ~~(Math.random() * questions.length);
+        var question = questions[randomChoice];
+
+        res.statusCode = 200;
+        res.send(question);
+      });
+  },
+
+  addQuestion: function(req, res, next) {
+    Question.create({
+      question: req.body.question,
+      choice1: req.body.choice1,
+      choice2: req.body.choice2,
+      choice3: req.body.choice3,
+      choice4: req.body.choice4,
+      answer: req.body.answer
+    })
+    .then(function(added) {
+        res.send('success');
+    });
   },
   /********** Log Functions **********/
   getLog: function(req, res, next) {

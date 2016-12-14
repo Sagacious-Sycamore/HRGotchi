@@ -12,6 +12,7 @@ class App extends React.Component {
       experience: 0,
       feed: 0,
       love: 0,
+      showModal: false,
       showNewName: false,
       cmdImg: {
         food:'../assets/food1.png',
@@ -159,6 +160,20 @@ class App extends React.Component {
     this.getCurrent();
   }
 
+  submitAnswer() {
+    console.log('Answer submitted');
+    this.toggleModal(); 
+  }
+
+  getQuestion() {
+    // get request to /api/question to update /fill array of 3 questions
+  }
+
+  toggleModal() {
+    console.log('toggle called');
+    this.setState({showModal: !this.state.showModal});
+  }
+
   render() {
     return (
       <div className='app container'>
@@ -177,6 +192,9 @@ class App extends React.Component {
                 <PetCommand cmdImg={this.state.cmdImg} executeCommand={this.executeCommand.bind(this)} />
               </div>) : <Restart showNameInput={this.showNameInput.bind(this)} showNewName={this.state.showNewName} getInput={this.getInput.bind(this)} newPet={this.newPet.bind(this)}></Restart>
             }</div>
+          </div>
+          <div>
+            <ModalInstance showModal={this.state.showModal} toggleModalClick={this.toggleModal.bind(this)} submitAnswer={this.submitAnswer.bind(this)}></ModalInstance>
           </div>
         </div>
       </div>

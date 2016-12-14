@@ -32,61 +32,34 @@ Send `GET` request to `/api/test`
 
 ## Setup
 
-Initialize database:
 
-
-```
-mysql -u root -p
-
-create database hrgotchi;
-
-use hrgotchi;
-
-INSERT into Pets (name) VALUES ('CHOOSE_NAME');
-```
-
-
-From within the root directory:
-
+Install dependencies and setup database:
 
 ```
 npm install
 
-cd public
-
-npm install && bower install
-
 ```
 
-
-Start SQL:
-
+For development and constant recompiling of jsx files:
 
 ```
-mysql.server start
+npm run build
+
 ```
-
-
-Compile React:
-
-
-``` 
-npm run startReact 
-```
-
 
 Start Server:
 
-
 ```
-npm start 
+npm start
+
 ```
 
 Visit:
 
-
 ```
+
 localhost:3000
+
 ```
 
 ## Roadmap
